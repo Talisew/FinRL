@@ -57,10 +57,10 @@ class StockTradingEnv(gym.Env):
         self.state_space = state_space
         self.action_space = action_space
         self.tech_indicator_list = tech_indicator_list
-        self.action_space = spaces.Box(low=-1, high=1, shape=(self.action_space,))
-        self.observation_space = spaces.Box(
+        self.action_space = Tuple((Discrete(2),spaces.Box(low=-1, high=1, shape=(self.action_space,))))
+        self.observation_space = Tuple((Discrete(2),spaces.Box(
             low=-np.inf, high=np.inf, shape=(self.state_space,)
-        )
+        )))
         self.data = self.df.loc[self.day, :]
         self.terminal = False
         self.make_plots = make_plots
