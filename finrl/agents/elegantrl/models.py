@@ -11,10 +11,11 @@ from elegantrl.agents import AgentTD3
 from elegantrl.train.config import Arguments
 from elegantrl.train.run import init_agent
 from elegantrl.train.run import train_and_evaluate
+from elegantrl.agents import AgentDQN
 
 # from elegantrl.agents import AgentA2C
 
-MODELS = {"ddpg": AgentDDPG, "td3": AgentTD3, "sac": AgentSAC, "ppo": AgentPPO}
+MODELS = {"ddpg": AgentDDPG, "td3": AgentTD3, "sac": AgentSAC, "ppo": AgentPPO, "dqn": AgentDQN}
 OFF_POLICY_MODELS = ["ddpg", "td3", "sac"]
 ON_POLICY_MODELS = ["ppo"]
 # MODEL_KWARGS = {x: config.__dict__[f"{x.upper()}_PARAMS"] for x in MODELS.keys()}
