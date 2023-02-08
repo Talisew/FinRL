@@ -79,6 +79,7 @@ class DRLAgent:
         tensorboard_log=None,
     ):
         if model_name not in MODELS:
+            print(MODELS)
             raise NotImplementedError("NotImplementedError")
 
         if model_kwargs is None:
