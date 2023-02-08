@@ -16,6 +16,7 @@ from stable_baselines3 import DDPG
 from stable_baselines3 import PPO
 from stable_baselines3 import SAC
 from stable_baselines3 import TD3
+from stable_baselines3 import DQN
 
 from finrl import config
 from finrl.agents.stablebaselines3.models import DRLAgent
@@ -102,7 +103,7 @@ class TuneSB3Optuna:
         self.total_timesteps = total_timesteps
         self.n_trials = n_trials
         self.logging_callback = logging_callback
-        self.MODELS = {"a2c": A2C, "ddpg": DDPG, "td3": TD3, "sac": SAC, "ppo": PPO}
+        self.MODELS = {"a2c": A2C, "ddpg": DDPG, "td3": TD3, "sac": SAC, "ppo": PPO,"dqn":DQN}
 
         check_and_make_directories(
             [
@@ -124,6 +125,8 @@ class TuneSB3Optuna:
             return hpt.sample_sac_params(trial)
         elif self.model_name == "ppo":
             return hpt.sample_ppo_params(trial)
+        elif self.model_name == "dqn":
+            return hpt.sample_dqn_params(trial)
 
     def calculate_sharpe(self, df: pd.DataFrame):
         df["daily_return"] = df["account_value"].pct_change(1)
