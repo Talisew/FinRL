@@ -21,7 +21,8 @@ from finrl.meta.env_stock_trading.env_stocktrading import StockTradingEnv
 from finrl.meta.preprocessor.preprocessors import data_split
 
 MODELS = {"a2c": A2C, "ddpg": DDPG, "td3": TD3, "sac": SAC, "ppo": PPO, "dqn":DQN}
-print({x: config.__dict__[f"{x.upper()}_PARAMS"] for x in MODELS.keys()})
+
+#print(config.__dict__)
 
 MODEL_KWARGS = {x: config.__dict__[f"{x.upper()}_PARAMS"] for x in MODELS.keys()}
 
